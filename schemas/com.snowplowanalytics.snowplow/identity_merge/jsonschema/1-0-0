@@ -1,0 +1,62 @@
+{
+  "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+  "description": "Schema for Identity context",
+  "self": {
+    "vendor": "com.snowplowanalytics.snowplow",
+    "name": "identity_merge",
+    "format": "jsonschema",
+    "version": "1-0-0"
+  },
+  "type": "object",
+  "properties": {
+    "eventId": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "demoted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "snowplowId": {
+          "type": "string"
+        },
+        "linkedIdentities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "identifiers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "createdAt",
+        "snowplowId",
+        "identifiers"
+      ]
+    }
+  },
+  "required": [
+    "eventId",
+    "createdAt",
+    "demoted",
+    "state"
+  ],
+  "additionalProperties": true
+}
